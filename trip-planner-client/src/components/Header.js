@@ -8,7 +8,7 @@ export default function Header() {
       <ul className="menuBar">
         <li>Home</li>
         <li>View Trips</li>
-        <li>Add Trip</li>
+        <li>Add Trip hello</li>
       </ul>
     </div>
   );
