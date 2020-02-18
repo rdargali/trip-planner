@@ -8,8 +8,8 @@ function App() {
       <div className="logIn">
         <h2>Log in</h2>
         <div>
-          <span>Email:</span>
-          <input type="email" name="logInEmail" />
+          <span>Username:</span>
+          <input type="text" name="logInUserName" />
         </div>
         <div>
           <span>Password:</span>
@@ -20,8 +20,8 @@ function App() {
       <div className="register">
         <h2>Register</h2>
         <div>
-          <span>Email:</span>
-          <input type="email" name="registerInEmail" />
+          <span>Username:</span>
+          <input type="UserName" name="registerInUserName" />
         </div>
         <div>
           <span>Password:</span>{" "}
