@@ -46,9 +46,7 @@ router.get("/:id", (req, res) => {
 
 router.delete("/:id", (req, res) => {
   Trip.findByIdAndDelete(req.params.id).then(() =>
-    res
-      .json("Excercises deleted")
-      .catch(err => res.status(400).json("Error: " + err))
+    res.json("trip deleted").catch(err => res.status(400).json("Error: " + err))
   );
 });
 
