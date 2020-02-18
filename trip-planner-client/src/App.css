@@ -49,3 +49,8 @@
 input {
   border: 1px solid black;
 }
+
+.addTripForm {
+  display: flex;
+  flex-direction: column;
+}
