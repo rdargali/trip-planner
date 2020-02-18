@@ -1,14 +1,20 @@
 import React from "react";
 import "../App.css";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   return (
     <div>
-      <h1>Trip Planner</h1>
       <ul className="menuBar">
-        <li>Home</li>
-        <li>View Trips</li>
-        <li>Add Trip hello</li>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/view">View Trips</Link>
+        </li>
+        <li>
+          <Link to="/add">Add Trip</Link>
+        </li>
       </ul>
     </div>
   );

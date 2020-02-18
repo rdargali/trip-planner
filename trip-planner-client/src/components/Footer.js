@@ -1,10 +1,10 @@
 import React from "react";
-import "../App.js";
+import "../App.css";
 
 export default function Footer() {
   return (
-    <div className="footer">
-      <span>Trip Planner ©</span>
+    <div className="footer-wrapper">
+      <div className="footer">Trip Planner ©</div>
     </div>
   );
 }
