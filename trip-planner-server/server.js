@@ -22,6 +22,13 @@ connection.once("open", () => {
   console.log("mongo database connected");
 });
 
+//routers
+// const tripsRouter = require("./routes/trips");
+// app.use("/trips", tripsRouter);
+
+const usersRouter = require("./routes/users");
+app.use("/users", usersRouter);
+
 app.listen(port, () => {
   console.log(`server running on ${port}`);
 });
