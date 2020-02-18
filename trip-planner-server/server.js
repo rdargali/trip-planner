@@ -23,8 +23,8 @@ connection.once("open", () => {
 });
 
 //routers
-// const tripsRouter = require("./routes/trips");
-// app.use("/trips", tripsRouter);
+const tripsRouter = require("./routes/trips");
+app.use("/trips", tripsRouter);
 
 const usersRouter = require("./routes/users");
 app.use("/users", usersRouter);
