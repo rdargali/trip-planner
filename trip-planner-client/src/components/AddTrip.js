@@ -3,7 +3,7 @@ import "../App.css";
 
 export default function AddTrip() {
   return (
-    <div>
+    <div id="addTripWrapper">
       <h3>Add Trip</h3>
       <div className="addTripForm">
         <div>
@@ -27,8 +27,8 @@ export default function AddTrip() {
         <div>
           <span>Notes</span> <input type="text" name="notes" />
         </div>
-        <button>Add Trip</button>
       </div>
+      <button>Add Trip</button>
     </div>
   );
 }
