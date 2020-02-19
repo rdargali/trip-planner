@@ -1,6 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/user.model");
+//bcrypt
+const bcrypt = require("bcrypt");
+const SALT_ROUNDS = 10;
 
 router.get("/", (req, res) => {
   User.find()
@@ -10,19 +13,33 @@ router.get("/", (req, res) => {
 
 router.post("/add", (req, res) => {
   const username = req.body.registerUserName;
-  const password = req.body.registerPassword;
+  const tohash = req.body.registerPassword;
 
-  const newUser = new User({
-    username,
-    password
+  bcrypt.hash(tohash, SALT_ROUNDS).then(password => {
+    const newUser = new User({
+      username,
+      password
+    });
+
+    newUser
+      .save()
+      .then(() => {
+        res.json("user added");
+      })
+      .catch(err => res.status(400).json("Error: " + err));
   });
 
-  newUser
-    .save()
-    .then(() => {
-      res.json("user added");
-    })
-    .catch(err => res.status(400).json("Error: " + err));
+  // const newUser = new User({
+  //   username,
+  //   password
+  // });
+
+  // newUser
+  //   .save()
+  //   .then(() => {
+  //     res.json("user added");
+  //   })
+  //   .catch(err => res.status(400).json("Error: " + err));
 });
 
 module.exports = router;
