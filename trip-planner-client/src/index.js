@@ -7,7 +7,6 @@ import * as serviceWorker from "./serviceWorker";
 import BaseLayout from "./components/BaseLayout";
 import AddTrip from "./components/AddTrip";
 import ViewTrip from "./components/ViewTrip";
-import Home from "./components/Home";
 
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
@@ -17,8 +16,8 @@ ReactDOM.render(
       <Switch>
         <Route exact path="/" component={App} />
         <Route path="/view" component={ViewTrip} />
+        {/* <Route path="/view/:id" component={EditTrip} /> */}
         <Route path="/add" component={AddTrip} />
-        <Route path="/home" component={Home} />
       </Switch>
     </BaseLayout>
   </BrowserRouter>,

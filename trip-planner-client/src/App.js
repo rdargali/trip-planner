@@ -1,5 +1,4 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 
 function App() {
@@ -21,11 +20,11 @@ function App() {
         <h2>Register</h2>
         <div>
           <span>Username:</span>
-          <input type="UserName" name="registerInUserName" />
+          <input type="UserName" name="registerUserName" />
         </div>
         <div>
           <span>Password:</span>{" "}
-          <input type="password" name="registerInPassword" />
+          <input type="password" name="registerPassword" />
         </div>
       </div>
     </div>
