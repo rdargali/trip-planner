@@ -2,28 +2,32 @@
   margin: 0;
 }
 
+body {
+  margin: 0;
+}
+
 .menuBar {
   display: flex;
-  justify-content: space-around;
+
   list-style: none;
   padding-left: 0;
-  padding: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   background-color: lightblue;
-  width: 100%;
+  width: 100vw;
+}
+
+.menuBar li {
+  margin-right: 1rem;
 }
 
 .footer-wrapper {
   text-align: center;
   padding: 1rem;
   background-color: lightgray;
-  position: absolute;
+  position: fixed;
   bottom: 0;
-  width: 100%;
-}
-
-#appWrapper {
-  margin-top: 1rem;
-  text-align: center;
+  width: 100vw;
 }
 
 .logIn {
@@ -55,6 +59,21 @@ input {
   flex-direction: column;
 }
 
-#addTripWrapper {
-  /* text-align: center; */
+.title {
+  text-align: center;
+}
+
+.tripsList {
+  list-style: none;
+}
+
+button {
+  max-width: 200px;
+}
+
+#app-wrapper {
+}
+
+.baseContainer {
+  position: relative;
 }

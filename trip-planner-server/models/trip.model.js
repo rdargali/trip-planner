@@ -15,11 +15,11 @@ const tripSchema = new Schema(
     },
 
     date: {
-      type: Date,
+      type: String,
       required: true
     },
     returndate: {
-      type: Date
+      type: String
     },
 
     triptype: {

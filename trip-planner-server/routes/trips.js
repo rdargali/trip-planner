@@ -11,8 +11,8 @@ router.get("/", (req, res) => {
 router.post("/add", (req, res) => {
   const username = req.body.username;
   const destination = req.body.destination;
-  const date = Date.parse(req.body.date);
-  const returndate = Date.parse(req.body.returndate);
+  const date = req.body.date;
+  const returndate = req.body.returndate;
   const triptype = req.body.triptype;
   const flight = req.body.flight;
   const hotel = req.body.hotel;
@@ -28,7 +28,7 @@ router.post("/add", (req, res) => {
     hotel,
     notes
   });
-
+  // console.log(newTrip);
   newTrip
     .save()
     .then(() => {
