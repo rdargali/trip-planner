@@ -5,10 +5,29 @@ const User = require("../models/user.model");
 const bcrypt = require("bcrypt");
 const SALT_ROUNDS = 10;
 
+// router.use(express.urlencoded());
+
 router.get("/", (req, res) => {
   User.find()
     .then(users => res.json(users))
     .catch(err => res.status(400).json("Error: " + err));
+});
+
+router.post("/login", (req, res) => {
+  const username = req.body.username;
+  const password = req.body.password;
+
+  User.findOne({
+    username: username
+  }).then(user => {
+    bcrypt.compare(password, user.password).then(result => {
+      if (result) {
+        console.log(result);
+      }
+    });
+  });
+
+  // validate log in credentials
 });
 
 router.post("/add", (req, res) => {
