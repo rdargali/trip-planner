@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import "../App.css";
 import { connect } from "react-redux";
+import axios from "axios";
 
 function LogIn() {
   const [logIn, setLogIn] = useState({
@@ -16,13 +17,15 @@ function LogIn() {
     });
   };
 
-  const onHandleLogInUser = e => {
+  const onHandleLogInUser = () => {
     let logInUser = {
       username: logIn.logInUserName,
       password: logIn.logInPassword
     };
 
-    console.log(logInUser);
+    axios
+      .post("http://localhost:5000/users/login", logInUser)
+      .then(res => console.log(res.data));
   };
 
   return (

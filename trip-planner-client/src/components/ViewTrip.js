@@ -13,6 +13,18 @@ function ViewTrip() {
       .then(response => setTrips(response.data));
   }, []);
 
+  const handleDelete = tripId => {
+    if (window.confirm("Are you sure you wish to delete this trip?")) {
+      axios
+        .delete("http://localhost:5000/trips/" + tripId)
+        .then(res => console.log(res.data));
+
+      window.location.href = "/view";
+    } else {
+      console.log("not deleted");
+    }
+  };
+
   return (
     <div>
       <h2 className="title">My Trips</h2>
@@ -40,9 +52,8 @@ function ViewTrip() {
                 <td>{trip.hotel}</td>
 
                 <td>
-                  <a href={"/view/" + trip._id}>Edit</a> |{" "}
-                  <a href={"/view/" + trip._id}>Delete</a>
-                  {/* <Link to={"/view/" + trip._id}>Edit</Link> | */}
+                  <a href={"/view/" + trip._id}>Edit</a> |
+                  <a onClick={() => handleDelete(trip._id)}>Delete</a>
                 </td>
               </tr>
             );

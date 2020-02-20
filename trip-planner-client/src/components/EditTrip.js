@@ -21,7 +21,7 @@ export default function EditTrip(props) {
       [e.target.name]: e.target.value
     });
   };
-  const history = useHistory();
+  // const history = useHistory();
 
   const onHandleUpdateTrip = e => {
     const tripId = props.match.params.id;
@@ -42,7 +42,8 @@ export default function EditTrip(props) {
       .post("http://localhost:5000/trips/update/" + tripId, updateTrip)
       .then(res => console.log(res.data));
 
-    history.push("/view");
+    // history.push("/view");
+    window.location.href = "/view";
   };
 
   return (
