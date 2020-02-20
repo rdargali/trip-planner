@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useState } from "react";
+import "../App.css";
 
 export default function Register() {
   const [register, setRegister] = useState({

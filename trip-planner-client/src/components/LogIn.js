@@ -1,7 +1,9 @@
 import React from "react";
 import { useState } from "react";
+import "../App.css";
+import { connect } from "react-redux";
 
-export default function LogIn() {
+function LogIn() {
   const [logIn, setLogIn] = useState({
     logInUserName: "",
     logInPassword: ""
@@ -48,3 +50,15 @@ export default function LogIn() {
     </div>
   );
 }
+
+const mapStateToProps = state => {
+  return {};
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    handleLogin: () => dispatch({ type: "LOG_IN" })
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(LogIn);

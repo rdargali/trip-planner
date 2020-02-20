@@ -15,6 +15,9 @@ export default function ViewTrip() {
   return (
     <div>
       <h2 className="title">My Trips</h2>
+      <br />
+      <hr />
+      <br />
       {trips.map(trip => {
         return (
           <div>
