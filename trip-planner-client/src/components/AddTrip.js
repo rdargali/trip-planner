@@ -2,6 +2,8 @@ import React from "react";
 import "../App.css";
 import { useState } from "react";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
+import ViewTrip from "./ViewTrip";
 
 export default function AddTrip() {
   const [trip, setTrip] = useState({
@@ -21,7 +23,7 @@ export default function AddTrip() {
       [e.target.name]: e.target.value
     });
   };
-
+  const history = useHistory();
   const onHandleAddTrip = e => {
     let newTrip = {
       username: "rawand",
@@ -38,6 +40,8 @@ export default function AddTrip() {
     axios
       .post("http://localhost:5000/trips/add", newTrip)
       .then(res => console.log(res.data));
+
+    history.push("/view");
   };
 
   return (
