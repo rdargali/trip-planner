@@ -54,8 +54,8 @@ router.post("/update/:id", (req, res) => {
   Trip.findById(req.params.id)
     .then(trip => {
       trip.destination = req.body.destination;
-      trip.date = Date.parse(req.body.date);
-      trip.returndate = Date.parse(req.body.returndate);
+      trip.date = req.body.date;
+      trip.returndate = req.body.returndate;
       trip.triptype = req.body.triptype;
       trip.flight = req.body.flight;
       trip.hotel = req.body.hotel;

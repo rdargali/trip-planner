@@ -28,18 +28,6 @@ router.post("/add", (req, res) => {
       })
       .catch(err => res.status(400).json("Error: " + err));
   });
-
-  // const newUser = new User({
-  //   username,
-  //   password
-  // });
-
-  // newUser
-  //   .save()
-  //   .then(() => {
-  //     res.json("user added");
-  //   })
-  //   .catch(err => res.status(400).json("Error: " + err));
 });
 
 module.exports = router;
