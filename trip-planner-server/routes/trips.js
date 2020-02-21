@@ -3,9 +3,7 @@ const router = express.Router();
 const Trip = require("../models/trip.model");
 
 router.get("/", (req, res) => {
-  Trip.find()
-    .then(trips => res.json(trips))
-    .catch(err => res.status(400).json("Error: " + err));
+  Trip.find().then(trips => res.json(trips));
 });
 
 router.post("/add", (req, res) => {

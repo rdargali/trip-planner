@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
+const authentication = require("./middlewares/authentication");
 
 require("dotenv").config();
 
@@ -24,7 +25,8 @@ connection.once("open", () => {
 
 //routers
 const tripsRouter = require("./routes/trips");
-app.use("/trips", tripsRouter);
+
+app.use("/trips", authentication, tripsRouter);
 
 const usersRouter = require("./routes/users");
 app.use("/users", usersRouter);

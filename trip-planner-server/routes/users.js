@@ -4,6 +4,7 @@ const User = require("../models/user.model");
 //bcrypt
 const bcrypt = require("bcrypt");
 const SALT_ROUNDS = 10;
+const jwt = require("jsonwebtoken");
 
 // router.use(express.urlencoded());
 
@@ -22,12 +23,14 @@ router.post("/login", (req, res) => {
   }).then(user => {
     bcrypt.compare(password, user.password).then(result => {
       if (result) {
-        console.log(result);
+        const token = jwt.sign({ username: user.username }, "TRIPSECRET");
+        // console.log(token);
+        res.json({ token: token });
+      } else {
+        res.json({ success: false, message: "invalid credentials" });
       }
     });
   });
-
-  // validate log in credentials
 });
 
 router.post("/add", (req, res) => {
