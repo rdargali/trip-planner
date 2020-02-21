@@ -1,17 +1,26 @@
 import React from "react";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
+import MenuItem from "@material-ui/core/MenuItem";
+import Select from "@material-ui/core/Select";
+import InputLabel from "@material-ui/core/InputLabel";
 
 import { useEffect, useState } from "react";
+import { FormHelperText } from "@material-ui/core";
+const token = localStorage.getItem("jsonwebtoken");
 
 export default function EditTrip(props) {
   const [trip, setTrip] = useState([]);
+  const tripId = props.match.params.id;
 
   useEffect(() => {
-    const tripId = props.match.params.id;
-    console.log(tripId);
     axios
-      .get("http://localhost:5000/trips/" + tripId)
+      .get("http://localhost:5000/trips/" + tripId, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
       .then(response => setTrip(response.data));
   }, []);
 
@@ -49,79 +58,113 @@ export default function EditTrip(props) {
   return (
     <div>
       <h2>Edit {trip.destination} trip</h2>
-
+      <br />
       <div className="updateTripForm">
         <div>
-          <label>New Destination</label>{" "}
-          <input
+          {/* <label>New Destination</label>{" "} */}
+          <InputLabel shrink id="demo-simple-select-filled-label">
+            New Destination
+          </InputLabel>
+          <TextField
+            required
+            id="outlined-basic"
             value={trip.destination}
             onChange={onHandleChange}
             type="text"
             name="destination"
           />
         </div>
+        <br />
         <div>
-          <label>New Date</label>{" "}
-          <input
+          {/* <label>New Date</label> */}
+          <InputLabel shrink id="demo-simple-select-filled-label">
+            New Date
+          </InputLabel>
+          <TextField
             value={trip.date}
             onChange={onHandleChange}
             type="date"
             name="date"
           />
         </div>
+        <br />
         <div>
-          <label>New Return Date</label>{" "}
-          <input
+          {/* <label>New Return Date</label>{" "} */}
+          <InputLabel shrink id="demo-simple-select-filled-label">
+            New Return Date
+          </InputLabel>
+          <TextField
             value={trip.returndate}
             onChange={onHandleChange}
             type="date"
             name="returndate"
           />
         </div>
+        <br />
         <div>
-          <label>New Type</label>{" "}
-          <select
+          {/* <label>New Type</label>{" "} */}
+          <InputLabel shrink id="demo-simple-select-filled-label">
+            New Trip Type
+          </InputLabel>
+          <Select
+            id="editSelect"
+            helperText="New Type"
             value={trip.triptype}
             onChange={onHandleChange}
             type="text"
             name="triptype"
           >
-            <option value="none" selected disabled hidden>
+            <MenuItem value="none" selected disabled>
               Flying or Driving?
-            </option>
-            <option value="Flight">Flight</option>
-            <option value="Drive">Drive</option>
-          </select>
+            </MenuItem>
+            <MenuItem value="Flight">Flight</MenuItem>
+            <MenuItem value="Drive">Drive</MenuItem>
+          </Select>
         </div>
+        <br />
         <div>
-          <label>New Flight</label>{" "}
-          <input
+          {/* <label>New Flight</label>{" "} */}
+          <InputLabel shrink id="demo-simple-select-filled-label">
+            New Flight
+          </InputLabel>
+          <TextField
             value={trip.flight}
             onChange={onHandleChange}
             type="text"
             name="flight"
           />
         </div>
+        <br />
         <div>
-          <span>New Hotel</span>{" "}
-          <input
+          {/* <label>New Hotel</label> */}
+          <InputLabel shrink id="demo-simple-select-filled-label">
+            New Hotel
+          </InputLabel>
+          <TextField
             value={trip.hotel}
             onChange={onHandleChange}
             type="text"
             name="hotel"
           />
         </div>
+        <br />
         <div>
-          <span>New Notes</span>{" "}
-          <input
+          {/* <label>New Notes</label> */}
+          <InputLabel shrink id="demo-simple-select-filled-label">
+            New Notes
+          </InputLabel>
+          <TextField
             value={trip.notes}
             onChange={onHandleChange}
             type="text"
             name="notes"
           />
         </div>
+        <br />
       </div>
-      <button onClick={onHandleUpdateTrip}>Update Trip</button>
+      <Button variant="contained" color="primary" onClick={onHandleUpdateTrip}>
+        Update Trip
+      </Button>
     </div>
   );
 }

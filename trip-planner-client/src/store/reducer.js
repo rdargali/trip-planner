@@ -1,6 +1,5 @@
 const initialState = {
-  isAuthenticated: false,
-  tripsCounter: 0
+  isAuthenticated: false
 };
 
 const reducer = (state = initialState, action) => {
@@ -15,18 +14,6 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         isAuthenticated: false
-      };
-
-    case "INCREMENT_TRIP_COUNTER":
-      return {
-        ...state,
-        tripsCounter: state.tripsCounter + 1
-      };
-
-    case "DECREMENT_TRIP_COUNTER":
-      return {
-        ...state,
-        tripsCounter: state.tripsCounter - 1
       };
 
     default: {

@@ -2,21 +2,34 @@ import React from "react";
 import "../App.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-dom";
+import Button from "@material-ui/core/Button";
 
+const token = localStorage.getItem("jsonwebtoken");
+console.log(token);
 function ViewTrip() {
   const [trips, setTrips] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:5000/trips")
-      .then(response => setTrips(response.data));
+    if (token) {
+      axios
+        .get("http://localhost:5000/trips", {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        })
+        .then(response => setTrips(response.data));
+    } else setTrips([]);
   }, []);
 
   const handleDelete = tripId => {
     if (window.confirm("Are you sure you wish to delete this trip?")) {
+      const token = localStorage.getItem("jsonwebtoken");
       axios
-        .delete("http://localhost:5000/trips/" + tripId)
+        .delete("http://localhost:5000/trips/" + tripId, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        })
         .then(res => console.log(res.data));
 
       window.location.href = "/view";
@@ -37,6 +50,7 @@ function ViewTrip() {
             <th>Trip Type</th>
             <th>Flight</th>
             <th>Hotel</th>
+            <th>Notes</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -50,10 +64,23 @@ function ViewTrip() {
                 <td>{trip.triptype}</td>
                 <td>{trip.flight}</td>
                 <td>{trip.hotel}</td>
+                <td>{trip.notes}</td>
 
                 <td>
-                  <a href={"/view/" + trip._id}>Edit</a> |
-                  <a onClick={() => handleDelete(trip._id)}>Delete</a>
+                  <Button
+                    color="primary"
+                    variant="contained"
+                    href={"/view/" + trip._id}
+                  >
+                    Edit
+                  </Button>
+                  <Button
+                    color="secondary"
+                    variant="contained"
+                    onClick={() => handleDelete(trip._id)}
+                  >
+                    Delete
+                  </Button>
                 </td>
               </tr>
             );

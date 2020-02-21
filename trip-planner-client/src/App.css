@@ -67,10 +67,6 @@ input {
   list-style: none;
 }
 
-button {
-  max-width: 200px;
-}
-
 #app-wrapper {
 }
 
@@ -95,3 +91,9 @@ tr:nth-child(even) {
   background-color: #dddddd;
 }
 /* end trips table */
+
+#editSelect {
+  /* padding-left: 64px; */
+  padding-right: 150px;
+  /* border: 1px solid black; */
+}

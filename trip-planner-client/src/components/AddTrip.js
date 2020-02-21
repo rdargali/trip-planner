@@ -2,8 +2,6 @@ import React from "react";
 import "../App.css";
 import { useState } from "react";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
-import ViewTrip from "./ViewTrip";
 
 export default function AddTrip() {
   const [trip, setTrip] = useState({
@@ -23,7 +21,7 @@ export default function AddTrip() {
       [e.target.name]: e.target.value
     });
   };
-  const history = useHistory();
+
   const onHandleAddTrip = e => {
     let newTrip = {
       username: "rawand",
@@ -37,11 +35,14 @@ export default function AddTrip() {
     };
 
     // console.log(newTrip);
+    const token = localStorage.getItem("jsonwebtoken");
     axios
-      .post("http://localhost:5000/trips/add", newTrip)
+      .post("http://localhost:5000/trips/add", newTrip, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
       .then(res => console.log(res.data));
-
-    history.push("/view");
   };
 
   return (

@@ -3,6 +3,9 @@ import { useState } from "react";
 import "../App.css";
 import { connect } from "react-redux";
 import axios from "axios";
+import { setAuthenticationHeader } from "../utils/authenticate";
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
 
 function LogIn() {
   const [logIn, setLogIn] = useState({
@@ -23,33 +26,42 @@ function LogIn() {
       password: logIn.logInPassword
     };
 
-    axios
-      .post("http://localhost:5000/users/login", logInUser)
-      .then(res => console.log(res.data));
+    axios.post("http://localhost:5000/users/login", logInUser).then(res => {
+      const token = res.data.token;
+
+      localStorage.setItem("jsonwebtoken", token);
+      setAuthenticationHeader(token);
+    });
   };
 
   return (
     <div>
-      <div className="logIn">
-        <h2>Log in</h2>
-        <div>
-          <label>Username: </label>
-          <input
-            onChange={onHandleChangeLogIn}
-            type="text"
-            name="logInUserName"
-          />
-        </div>
-        <div>
-          <label>Password: </label>
-          <input
-            onChange={onHandleChangeLogIn}
-            type="password"
-            name="logInPassword"
-          />
-        </div>
-        <button onClick={onHandleLogInUser}>Log In</button>
+      <h2>Log in</h2>
+      <div>
+        {/* <label>Username: </label> */}
+        <TextField
+          onChange={onHandleChangeLogIn}
+          type="text"
+          name="logInUserName"
+          id="filled-basic"
+          label="Username"
+          variant="filled"
+        />
       </div>
+      <div>
+        {/* <label>Password: </label> */}
+        <TextField
+          onChange={onHandleChangeLogIn}
+          type="password"
+          name="logInPassword"
+          id="filled-basic"
+          label="Password"
+          variant="filled"
+        />
+      </div>
+      <Button variant="contained" color="primary" onClick={onHandleLogInUser}>
+        Log In
+      </Button>
     </div>
   );
 }
