@@ -5,9 +5,9 @@ import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
+import { Link } from "react-router-dom";
 
 import { useEffect, useState } from "react";
-import { FormHelperText } from "@material-ui/core";
 const token = localStorage.getItem("jsonwebtoken");
 
 export default function EditTrip(props) {
@@ -33,8 +33,6 @@ export default function EditTrip(props) {
   // const history = useHistory();
 
   const onHandleUpdateTrip = e => {
-    const tripId = props.match.params.id;
-
     let updateTrip = {
       // username: "rawand",
       destination: trip.destination,
@@ -46,13 +44,16 @@ export default function EditTrip(props) {
       notes: trip.notes
     };
 
-    // console.log(updateTrip);
+    console.log(updateTrip);
     axios
-      .post("http://localhost:5000/trips/update/" + tripId, updateTrip)
-      .then(res => console.log(res.data));
+      .post("http://localhost:5000/trips/update/" + tripId, updateTrip, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
 
-    // history.push("/view");
-    window.location.href = "/view";
+        // history.push("/view");
+      })
+      .then(res => console.log(res.data));
   };
 
   return (
@@ -162,9 +163,15 @@ export default function EditTrip(props) {
         </div>
         <br />
       </div>
-      <Button variant="contained" color="primary" onClick={onHandleUpdateTrip}>
-        Update Trip
-      </Button>
+      <Link to="/view">
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={onHandleUpdateTrip}
+        >
+          Update Trip
+        </Button>
+      </Link>
     </div>
   );
 }
