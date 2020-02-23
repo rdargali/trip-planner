@@ -43,9 +43,7 @@ router.get("/:id", (req, res) => {
 });
 
 router.delete("/:id", (req, res) => {
-  Trip.findByIdAndDelete(req.params.id).then(() =>
-    res.json("trip deleted").catch(err => res.status(400).json("Error: " + err))
-  );
+  Trip.findByIdAndDelete(req.params.id).then(() => res.json("trip deleted"));
 });
 
 router.post("/update/:id", (req, res) => {
