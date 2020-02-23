@@ -79,7 +79,7 @@ export default function EditTrip(props) {
         <div>
           {/* <label>New Date</label> */}
           <InputLabel shrink id="demo-simple-select-filled-label">
-            New Date
+            Updated Date
           </InputLabel>
           <TextField
             value={trip.date}
@@ -92,7 +92,7 @@ export default function EditTrip(props) {
         <div>
           {/* <label>New Return Date</label>{" "} */}
           <InputLabel shrink id="demo-simple-select-filled-label">
-            New Return Date
+            Updated Return Date
           </InputLabel>
           <TextField
             value={trip.returndate}
@@ -105,11 +105,11 @@ export default function EditTrip(props) {
         <div>
           {/* <label>New Type</label>{" "} */}
           <InputLabel shrink id="demo-simple-select-filled-label">
-            New Trip Type
+            Updated Trip Type
           </InputLabel>
           <Select
             id="editSelect"
-            helperText="New Type"
+            helperText="Updated Type"
             value={trip.triptype}
             onChange={onHandleChange}
             type="text"
@@ -126,7 +126,7 @@ export default function EditTrip(props) {
         <div>
           {/* <label>New Flight</label>{" "} */}
           <InputLabel shrink id="demo-simple-select-filled-label">
-            New Flight
+            Updated Flight Notes
           </InputLabel>
           <TextField
             value={trip.flight}
@@ -139,7 +139,7 @@ export default function EditTrip(props) {
         <div>
           {/* <label>New Hotel</label> */}
           <InputLabel shrink id="demo-simple-select-filled-label">
-            New Hotel
+            Updated Hotel Notes
           </InputLabel>
           <TextField
             value={trip.hotel}
@@ -152,7 +152,7 @@ export default function EditTrip(props) {
         <div>
           {/* <label>New Notes</label> */}
           <InputLabel shrink id="demo-simple-select-filled-label">
-            New Notes
+            Updated Additional Notes
           </InputLabel>
           <TextField
             value={trip.notes}

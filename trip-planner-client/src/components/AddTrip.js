@@ -1,13 +1,12 @@
-import React from "react";
-import "../App.css";
-import { useState } from "react";
-import axios from "axios";
-import { Link } from "react-router-dom";
 import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
+import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
-import InputLabel from "@material-ui/core/InputLabel";
+import TextField from "@material-ui/core/TextField";
+import axios from "axios";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import "../App.css";
 
 export default function AddTrip() {
   const [trip, setTrip] = useState({
@@ -23,8 +22,13 @@ export default function AddTrip() {
 
   const onHandleChange = e => {
     setTrip({
-      ...trip,
-      [e.target.name]: e.target.value
+      destination: e.target.value,
+      date: e.target.value,
+      returndate: e.target.value,
+      triptype: e.target.value,
+      flight: e.target.value,
+      hotel: e.target.value,
+      notes: e.target.value
     });
   };
 
@@ -35,9 +39,9 @@ export default function AddTrip() {
       date: trip.date,
       returndate: trip.returndate,
       triptype: trip.triptype,
-      flight: trip.flight,
-      hotel: trip.hotel,
-      notes: trip.notes
+      flight: (trip.flight = " " ? "N/A" : trip.flight),
+      hotel: (trip.hotel = " " ? "Ø" : trip.hotel),
+      notes: (trip.notes = " " ? "Ø" : trip.notes)
     };
 
     // console.log(newTrip);
@@ -99,7 +103,7 @@ export default function AddTrip() {
         <div>
           {/* <label>Type</label> */}
           <InputLabel shrink id="demo-simple-select-filled-label">
-            Trip Type
+            Trip Type (Flying or Driving?)
           </InputLabel>
           <Select
             id="editSelect"
@@ -108,9 +112,7 @@ export default function AddTrip() {
             type="text"
             name="triptype"
           >
-            <MenuItem value="none" selected disabled>
-              Flying or Driving?
-            </MenuItem>
+            <MenuItem disabled>Flying or Driving?</MenuItem>
             <MenuItem value="Flight">Flight</MenuItem>
             <MenuItem value="Drive">Drive</MenuItem>
           </Select>
