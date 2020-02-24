@@ -59,6 +59,10 @@ input {
   flex-direction: column;
 }
 
+/* .addTripForm div div {
+  margin: ;
+} */
+
 .title {
   text-align: center;
 }
@@ -96,4 +100,9 @@ tr:nth-child(even) {
   /* padding-left: 64px; */
   padding-right: 150px;
   /* border: 1px solid black; */
+}
+
+.LR {
+  margin-top: 1rem;
+  display: grid;
 }

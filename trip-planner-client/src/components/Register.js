@@ -31,8 +31,14 @@ export default function Register() {
   };
 
   return (
-    <div>
-      <h2>Register</h2>
+    <div className="LR">
+      <h2
+        style={{
+          textAlign: "center"
+        }}
+      >
+        Register
+      </h2>
       <div>
         {/* <label>Username: </label> */}
         <TextField

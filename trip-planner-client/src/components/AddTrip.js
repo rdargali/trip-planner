@@ -22,14 +22,10 @@ export default function AddTrip() {
 
   const onHandleChange = e => {
     setTrip({
-      destination: e.target.value,
-      date: e.target.value,
-      returndate: e.target.value,
-      triptype: e.target.value,
-      flight: e.target.value,
-      hotel: e.target.value,
-      notes: e.target.value
+      ...trip,
+      [e.target.name]: e.target.value
     });
+    console.log(e);
   };
 
   const onHandleAddTrip = e => {
@@ -39,9 +35,9 @@ export default function AddTrip() {
       date: trip.date,
       returndate: trip.returndate,
       triptype: trip.triptype,
-      flight: (trip.flight = " " ? "N/A" : trip.flight),
-      hotel: (trip.hotel = " " ? "Ø" : trip.hotel),
-      notes: (trip.notes = " " ? "Ø" : trip.notes)
+      flight: (trip.flight = "" ? "N/A" : trip.flight),
+      hotel: (trip.hotel = "" ? "N/A" : trip.hotel),
+      notes: (trip.notes = "" ? "N/A" : trip.notes)
     };
 
     // console.log(newTrip);
@@ -57,91 +53,114 @@ export default function AddTrip() {
 
   return (
     <div>
+      <br />
       <h2 className="title">Add Trip</h2>
       <div className="addTripForm">
-        <div>
-          {/* <label>Destination</label>{" "} */}
-          <InputLabel shrink id="demo-simple-select-filled-label">
-            Destination
-          </InputLabel>
-          <TextField
-            required
-            id="outlined-basic"
-            onChange={onHandleChange}
-            type="text"
-            name="destination"
-          />
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-evenly"
+          }}
+        >
+          <div>
+            {/* <label>Destination</label>{" "} */}
+            <InputLabel shrink id="demo-simple-select-filled-label">
+              Destination
+            </InputLabel>
+            <TextField
+              required
+              id="outlined-basic"
+              onChange={onHandleChange}
+              type="text"
+              name="destination"
+            />
+          </div>
+
+          <div>
+            {/* <label>Type</label> */}
+            <InputLabel shrink id="demo-simple-select-filled-label">
+              Trip Type (Flying or Driving?)
+            </InputLabel>
+            <Select
+              id="editSelect"
+              helperText="Trip Type"
+              onChange={onHandleChange}
+              type="text"
+              name="triptype"
+            >
+              <MenuItem disabled>Flying or Driving?</MenuItem>
+              <MenuItem value="Flight">Flight</MenuItem>
+              <MenuItem value="Drive">Drive</MenuItem>
+            </Select>
+          </div>
         </div>
         <br />
-        <div>
-          {/* <label>Date</label> */}
-          <InputLabel shrink id="demo-simple-select-filled-label">
-            Date
-          </InputLabel>
-          <TextField
-            required
-            id="outlined-basic"
-            onChange={onHandleChange}
-            type="date"
-            name="date"
-          />
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-evenly"
+          }}
+        >
+          <div>
+            {/* <label>Date</label> */}
+            <InputLabel shrink id="demo-simple-select-filled-label">
+              Date
+            </InputLabel>
+            <TextField
+              required
+              id="outlined-basic"
+              onChange={onHandleChange}
+              type="date"
+              name="date"
+            />
+          </div>
+
+          <div>
+            {/* <label>Return Date</label> */}
+            <InputLabel shrink id="demo-simple-select-filled-label">
+              Return Date
+            </InputLabel>
+            <TextField
+              id="outlined-basic"
+              onChange={onHandleChange}
+              type="date"
+              name="returndate"
+            />
+          </div>
         </div>
         <br />
-        <div>
-          {/* <label>Return Date</label> */}
-          <InputLabel shrink id="demo-simple-select-filled-label">
-            Return Date
-          </InputLabel>
-          <TextField
-            id="outlined-basic"
-            onChange={onHandleChange}
-            type="date"
-            name="returndate"
-          />
-        </div>
+
         <br />
-        <div>
-          {/* <label>Type</label> */}
-          <InputLabel shrink id="demo-simple-select-filled-label">
-            Trip Type (Flying or Driving?)
-          </InputLabel>
-          <Select
-            id="editSelect"
-            helperText="Trip Type"
-            onChange={onHandleChange}
-            type="text"
-            name="triptype"
-          >
-            <MenuItem disabled>Flying or Driving?</MenuItem>
-            <MenuItem value="Flight">Flight</MenuItem>
-            <MenuItem value="Drive">Drive</MenuItem>
-          </Select>
-        </div>
-        <br />
-        <div>
-          {/* <label>Flight</label> */}
-          <InputLabel shrink id="demo-simple-select-filled-label">
-            Flight Notes
-          </InputLabel>
-          <TextField
-            id="outlined-basic"
-            onChange={onHandleChange}
-            type="text"
-            name="flight"
-          />
-        </div>
-        <br />
-        <div>
-          {/* <span>Hotel</span> */}
-          <InputLabel shrink id="demo-simple-select-filled-label">
-            Hotel Notes
-          </InputLabel>
-          <TextField
-            id="outlined-basic"
-            onChange={onHandleChange}
-            type="text"
-            name="hotel"
-          />
+        <div
+          style={{
+            display: "flex"
+          }}
+        >
+          <div>
+            {/* <label>Flight</label> */}
+            <InputLabel shrink id="demo-simple-select-filled-label">
+              Flight Notes
+            </InputLabel>
+            <TextField
+              id="outlined-basic"
+              onChange={onHandleChange}
+              type="text"
+              name="flight"
+            />
+          </div>
+          <br />
+          <div>
+            {/* <span>Hotel</span> */}
+            <InputLabel shrink id="demo-simple-select-filled-label">
+              Hotel Notes
+            </InputLabel>
+            <TextField
+              id="outlined-basic"
+              onChange={onHandleChange}
+              type="text"
+              name="hotel"
+            />
+          </div>
         </div>
         <br />
         <div>

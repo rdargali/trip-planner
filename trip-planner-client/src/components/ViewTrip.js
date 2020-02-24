@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Button from "@material-ui/core/Button";
 
-//material ui tabke
+//material ui table
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -13,6 +13,9 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
+
+import EditIcon from "@material-ui/icons/Edit";
+import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 
 const token = localStorage.getItem("jsonwebtoken");
 
@@ -76,7 +79,8 @@ function ViewTrip() {
 
   return (
     <div>
-      {/* <h2 className="title">My Trips</h2> */}
+      <br />
+      <h2 className="title">My Trips</h2>
       <TableContainer component={Paper}>
         <Table className={classes.table} aria-label="customized table">
           <TableHead>
@@ -113,7 +117,7 @@ function ViewTrip() {
                     variant="contained"
                     href={"/view/" + trip._id}
                   >
-                    Edit
+                    <EditIcon />
                   </Button>
 
                   <Button
@@ -121,7 +125,7 @@ function ViewTrip() {
                     variant="contained"
                     onClick={() => handleDelete(trip._id)}
                   >
-                    Delete
+                    <HighlightOffIcon />
                   </Button>
                 </StyledTableCell>
               </StyledTableRow>

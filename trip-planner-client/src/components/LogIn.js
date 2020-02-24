@@ -35,8 +35,14 @@ function LogIn() {
   };
 
   return (
-    <div>
-      <h2>Log in</h2>
+    <div className="LR">
+      <h2
+        style={{
+          textAlign: "center"
+        }}
+      >
+        Log in
+      </h2>
       <div>
         {/* <label>Username: </label> */}
         <TextField

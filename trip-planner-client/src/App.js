@@ -5,7 +5,12 @@ import Register from "./components/Register";
 
 export default function App() {
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "space-around"
+      }}
+    >
       <Login />
 
       <Register />

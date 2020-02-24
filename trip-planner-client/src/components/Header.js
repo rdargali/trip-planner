@@ -1,40 +1,46 @@
 import React from "react";
 import "../App.css";
+
 import { Link } from "react-router-dom";
 
-import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
+import Paper from "@material-ui/core/Paper";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
-import PhoneIcon from "@material-ui/icons/Phone";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import PersonPinIcon from "@material-ui/icons/PersonPin";
-import HelpIcon from "@material-ui/icons/Help";
-import ShoppingBasket from "@material-ui/icons/ShoppingBasket";
-import ThumbDown from "@material-ui/icons/ThumbDown";
-import ThumbUp from "@material-ui/icons/ThumbUp";
-import Typography from "@material-ui/core/Typography";
-import Box from "@material-ui/core/Box";
+import HomeIcon from "@material-ui/icons/Home";
+import AddIcon from "@material-ui/icons/Add";
+import FlightIcon from "@material-ui/icons/Flight";
 
-
+const useStyles = makeStyles({
+  root: {
+    flexGrow: 1
+  }
+});
 
 export default function Header(props) {
+  const classes = useStyles();
+  const [value, setValue] = React.useState(0);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
   return (
     <div>
-      <div>
-        {/* <ul className="menuBar">
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/view">View Trips</Link>
-        </li>
-        <li>
-          <Link to="/add">Add Trip</Link>
-        </li>
-      </ul> */}
-      </div>
+      <Paper className={classes.root}>
+        <Tabs indicatorColor="primary" textColor="primary" centered>
+          <Link onClick={handleChange} to="/">
+            <Tab icon={<HomeIcon />} />
+          </Link>
+
+          <Link onClick={handleChange} to="/view">
+            <Tab icon={<FlightIcon />} />
+          </Link>
+          <Link onClick={handleChange} to="/add">
+            <Tab icon={<AddIcon />} />
+          </Link>
+        </Tabs>
+      </Paper>
     </div>
   );
 }
